@@ -68,8 +68,16 @@ np_12_states_1or(N) :-
 	T = [_| []].
 
 %names of parks that are within exactly one or exactly two states without or
+%do this by overloading functions
 np_12_states_2wo(N) :-
-	np_12_states_1or(N).
+	np(N, S, _),
+	S = [_|[]].
+
+np_12_states_2wo(N) :-
+	np(N, S, _),
+	S = [_| T],
+	T = [_| []].
+	
 
 %names of parks that provide exactly camping and hiking (in either order); do this query three ways
 %by defining only 1 rule in your code that uses Prolog’s or operator ";"
@@ -84,8 +92,18 @@ np_camping_hiking_1or(N) :-
 	T = [hiking | []].
 
 %by defining only 2 rules in your code without using Prolog’s or operator ";"
+%do this by overloading function
 np_camping_hiking_2wo(N) :-
-	np_camping_hiking_1or(N).
+	np(N, _, A),
+	[H|T] = A,
+	H = hiking,
+	T = [camping | []].
+
+np_camping_hiking_2wo(N) :-
+	np(N, _, A),
+	[H|T] = A,
+	H = camping,
+	T = [hiking | []].
 
 %by using sort
 np_camping_hiking_sort(N) :-
