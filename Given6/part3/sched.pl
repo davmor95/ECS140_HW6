@@ -112,7 +112,6 @@ naaa([E1|R], NAL, AL) :-
 
 %%%%%%%%%%%%%Part3%%%%%%%%%%%%%%%
 
-splitlist([], [],Pivot,[]).
 splitlist([X|Remain], Left, Pivot, Right) :-
 	X \== Pivot,
 	splitlist(Remain, Y, Pivot, Right),
@@ -122,9 +121,8 @@ splitlist([X|Remain], Left, Pivot, Right) :-
 	X == Pivot,
 	splitlistR(Remain, Left, Pivot, Right).
 
-splitlistR([X|Remain], Left, Pivot, Right) :-
-	splitlistR(Remain, Left, Pivot, R),
-	Right = [X|R].
+splitlistR(L, [], Pivot, Right) :-
+	Right = L.
 
 
 
