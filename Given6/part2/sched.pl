@@ -131,12 +131,14 @@ naaa([],[],[]).
 
 naaa([H|T],NAL, AL) :- 
 	atom(H),
-	naaa(T,NAL,Y1),
-	AL = [H|Y1].
+	naaa(T,NAL,Temp),
+	AL = [H|Temp].
 
 naaa([H|T], NAL, AL) :-
 	\+ atom(H),
-	naaa(T,Y1,AL),
-	NAL = [H|Y1].
+	naaa(T,Temp,AL),
+	NAL = [H|Temp].
+
+
 	
 	
