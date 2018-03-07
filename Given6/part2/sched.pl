@@ -98,6 +98,17 @@ butlast([H|T], Z) :-
 	butlast(T, Y),
 	Z = [H|Y].
 
+naaa([],[],[]).
+
+naaa([E1|R],NAL, AL) :- 
+	atom(E1),
+	naaa(R,NAL,Y1),
+	AL = [E1|Y1].
+
+naaa([E1|R], NAL, AL) :-
+	\+ atom(E1),
+	naaa(R,Y1,AL),
+	NAL = [E1|Y1].
 
 	
 
