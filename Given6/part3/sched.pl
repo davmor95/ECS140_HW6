@@ -121,8 +121,27 @@ splitlist([X|Remain], Left, Pivot, Right) :-
 	X == Pivot,
 	splitlistR(Remain, Left, Pivot, Right).
 
-splitlistR(L, [], Pivot, Right) :-
+splitlistR(L, [],_, Right) :-
 	Right = L.
+
+
+split3list([X|Remain], Owner, Left, Pivot, Right) :-
+	\+ check3rd(X, Owner),
+	split3list(Remain, Owner, Y, Pivot, Right),
+	Left = [X|Y].
+
+split3list([X|Remain], Owner, Left, Pivot, Right) :-
+	check3rd(X, Owner),
+	Pivot = X,
+	split3listR(Remain, Owner, Left, Pivot, Right).
+
+split3listR(L, _, [], _, Right) :-
+	Right = L.
+
+check3rd(L, Owner) :-
+	nth0(2, L, X),
+	Owner == X.
+
 
 
 
