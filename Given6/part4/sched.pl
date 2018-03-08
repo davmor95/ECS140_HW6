@@ -177,7 +177,7 @@ check3rd(L, Owner) :-
 	nth0(2, L, H),
 	Owner == H.
 
-%%%%%%%%Part4%%%%%%%%%%%
+%%%%%%%%%%% Part4  %%%%%%%%%%%%%
 %Base Case, given an empty list, return an empty list.
 perm([],[]). 
 
