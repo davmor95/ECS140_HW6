@@ -144,26 +144,16 @@ check3rd(L, Owner) :-
 
 %%%%%%%%Part4%%%%%%%%%%%
 
-perm([],[]).
+perm([],[]). %Base Case, given an empty list, return an empty list.
 
 perm(L,PermL) :-
-	select(E1,L,R),
-	perm(R,Y),
-	PermL = [E1|Y].
+	select(E1,L,R), %Call select to backtrack on all the element of L
+	perm(R,Y), %Recurse on R which is the L without E1.
+	PermL = [E1|Y]. %Store E1 as well as permL returns (Y).
 
 permsub(L,PermL) :-
-	naaa(L, Y2, _),
-	perm(L, R),
-	naaa(R, Y4, _),
-	Y2 == Y4,
-	PermL = R.
-
-
-
-
-
-
-
-
-
-
+	naaa(L, Y2, _), %call naaa to get the non-atoms list of the original L.
+	perm(L, R), %call perm to get the permuation, permuation stored in R.
+	naaa(R, Y4, _), %call naaa to get the non-atoms of R.
+	Y2 == Y4, %check non-atoms list from L to non-atoms list of R.
+	PermL = R. % store in PermL if check is true.
