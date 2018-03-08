@@ -142,10 +142,19 @@ check3rd(L, Owner) :-
 	nth0(2, L, X),
 	Owner == X.
 
+perm([],[]).
 
+perm(L,PermL) :-
+	select(E1,L,R),
+	perm(R,Y),
+	PermL = [E1|Y].
 
-
-
+permsub(L,PermL) :-
+	naaa(L, Y2, _),
+	perm(L,R),
+	naaa(R, Y4, _),
+	Y2 == Y4,
+	PermL = R.
 
 
 
