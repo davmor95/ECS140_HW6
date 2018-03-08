@@ -148,8 +148,8 @@ perm([],[]). %Base Case, given an empty list, return an empty list.
 
 perm(L,PermL) :-
 	select(E1,L,R), %Call select to backtrack on all the element of L
-	perm(R,Y), %Recurse on R which is the L without E1.
-	PermL = [E1|Y]. %Store E1 as well as permL returns (Y).
+	perm(R,Y), %Recurse on R which is L without E1.
+	PermL = [E1|Y]. %Store E1 as well as whatever permL returns (Y).
 
 permsub(L,PermL) :-
 	naaa(L, Y2, _), %call naaa to get the non-atoms list of the original L.
