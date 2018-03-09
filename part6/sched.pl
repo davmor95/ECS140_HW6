@@ -1,3 +1,4 @@
+%%%%%%%%%%%Part1%%%%%%%%%%%
 np_names(N) :- 
 	np(N,_,_).
 
@@ -292,6 +293,8 @@ myRemain(List, Return) :-
   Return = [];
   List = [_|R],
   Return = R.
+
+%%%%%%%%%%%Part6%%%%%%%%%%%
 
 % Select applies the code afterwards to all cases
 % Select can return the information of the things it removes as OldStart and OldSize
